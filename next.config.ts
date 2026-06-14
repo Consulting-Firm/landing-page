@@ -7,15 +7,11 @@ const nextConfig: NextConfig = {
     root: import.meta.dirname,
   },
   images: {
-    // Placeholder project imagery for the hero carousel. Swap for a real CDN
-    // (or local imports) once production assets exist.
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "picsum.photos",
-        pathname: "/seed/**",
-      },
-    ],
+    // The hero logos are first-party SVGs we control. Allow the image optimizer
+    // to serve them, sandboxed via CSP so they can't execute scripts.
+    dangerouslyAllowSVG: true,
+    contentDispositionType: "attachment",
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 };
 

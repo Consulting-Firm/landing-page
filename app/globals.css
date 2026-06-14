@@ -206,41 +206,17 @@
   left: calc(var(--cw, 300px) / -2);
   top: calc(var(--ch, 380px) / -2);
   border-radius: calc(var(--cw, 300px) * 0.08);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: calc(var(--cw, 300px) * 0.085);
+  /* Per-card brand colour (set inline); this is just the fallback. */
+  background: #fff;
   backface-visibility: hidden;
   will-change: transform, opacity;
   user-select: none;
   overflow: hidden;
 }
-.car-card .label {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.car-card .name {
-  font-size: calc(var(--cw, 300px) * 0.1);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  color: #fff;
-}
-.car-card .tag {
-  font-size: calc(var(--cw, 300px) * 0.044);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: rgba(255, 255, 255, 0.7);
-}
-/* Bottom scrim keeps the label legible over any photo. */
-.car-card::after {
-  content: "";
+/* Logo fills the tile, kept whole by object-contain, with a touch of clear space. */
+.car-logo {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent 55%);
-  pointer-events: none;
+  inset: 8%;
 }
 
 /* --- Services: animated visualisations --- */

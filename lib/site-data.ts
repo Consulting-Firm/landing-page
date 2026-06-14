@@ -36,13 +36,12 @@ export interface Project {
 }
 
 export interface HeroCard {
+  /** Company name — used as the image alt text. */
   name: string;
-  tag: string;
+  /** Logo SVG in /public. */
   img: string;
-  /** Solid fallback shown until the photo loads. */
+  /** Tile colour behind the logo (matches the logo's own background). */
   bg: string;
-  /** Label colour tuned for each fallback. */
-  fg: string;
 }
 
 export const NAV_LINKS = [
@@ -179,16 +178,17 @@ export const PROJECTS: Project[] = [
 ];
 
 /**
- * Cards wrapped around the 3D hero cylinder. `img` is the only place to swap in
- * real project photography; deterministic picsum seeds stand in for now.
+ * Client logos wrapped around the 3D hero cylinder — a rotating "trusted by"
+ * wall. Files live in /public.
  */
 export const HERO_CARDS: HeroCard[] = [
-  { name: "Nordwind", tag: "Fintech", img: "https://picsum.photos/seed/nordwind/640/860", bg: "#f25c2a", fg: "#fdf3e7" },
-  { name: "PayCore", tag: "Payments", img: "https://picsum.photos/seed/paycore/640/860", bg: "#2451f5", fg: "#eef1ff" },
-  { name: "Atlas", tag: "Logistics", img: "https://picsum.photos/seed/atlas/640/860", bg: "#ffd233", fg: "#161306" },
-  { name: "Verda", tag: "Healthcare", img: "https://picsum.photos/seed/verda/640/860", bg: "#1c2b22", fg: "#cdeb8b" },
-  { name: "Mireo", tag: "SaaS", img: "https://picsum.photos/seed/mireo/640/860", bg: "#e9e5dc", fg: "#171511" },
-  { name: "Quanta", tag: "Energy", img: "https://picsum.photos/seed/quanta/640/860", bg: "#17171d", fg: "#f5f3ee" },
+  { name: "Adobe", img: "/adobe.svg", bg: "#ed1000" },
+  { name: "Deutsche Bank", img: "/deutsche-bank.svg", bg: "#ffffff" },
+  // { name: "ByteSchool", img: "/byteschool.svg", bg: "#fbe18a" },
+  { name: "eSolutions", img: "/esolutions.svg", bg: "#ffffff" },
+  { name: "Upwork", img: "/upwork.svg", bg: "#14a800" },
+  { name: "safeINIT", img: "/safeinit.svg", bg: "#ffffff" },
+  { name: "Softwire", img: "/softwire.svg", bg: "#ffffff" },
 ];
 
 export const CONTACT_EMAIL = "hello@axon.studio";

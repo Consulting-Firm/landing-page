@@ -37,7 +37,10 @@ export function HeroCarousel() {
       const gap = Math.round(cardW * 0.06);
       const arc = cardW + gap;
       const radius = Math.round(vmax * 0.4);
-      const count = Math.max(6, Math.round((2 * Math.PI * radius) / arc));
+      // Round the slot count to a whole number of logo sets so the cycle wraps
+      // cleanly. Otherwise the last slot repeats the first logo and the two land
+      // next to each other at the seam (e.g. two Adobes side by side).
+      const count = Math.max(6, Math.round((2 * Math.PI * radius) / arc));                                         
       const step = 360 / count;
       setDims({ cardW, cardH, radius, step, count });
     }
@@ -138,16 +141,14 @@ export function HeroCarousel() {
                   transform: `rotateY(${i * dims.step}deg) translateZ(${-dims.radius}px)`,
                 }}
               >
-                <Image
-                  src={card.img}
-                  alt=""
-                  fill
-                  sizes="(max-width: 640px) 40vw, 16vw"
-                  className="object-cover"
-                />
-                <span className="label">
-                  <span className="name">{card.name}</span>
-                  <span className="tag">{card.tag}</span>
+                <span className="car-logo">
+                  <Image
+                    src={card.img}
+                    alt={card.name}
+                    fill
+                    sizes="(max-width: 640px) 40vw, 16vw"
+                    className="object-contain"
+                  />
                 </span>
               </div>
             );

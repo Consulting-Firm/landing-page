@@ -1,10 +1,27 @@
+import { ScrollReveal } from "@/components/scroll-reveal";
+import { Cta } from "@/components/sections/cta";
+import { Hero } from "@/components/sections/hero";
+import { Process } from "@/components/sections/process";
+import { Projects } from "@/components/sections/projects";
+import { Services } from "@/components/sections/services";
+import { SiteFooter } from "@/components/sections/site-footer";
+import { SiteNav } from "@/components/sections/site-nav";
+import { Team } from "@/components/sections/team";
+
 export default function Home() {
   return (
-    <main className="flex flex-1 flex-col items-center justify-center p-8">
-      <h1 className="text-2xl font-semibold tracking-tight">Visana Studios</h1>
-      <p className="mt-2 text-sm text-muted-foreground">
-        Start building in app/page.tsx.
-      </p>
-    </main>
+    <>
+      <SiteNav />
+      <main>
+        <Hero />
+        <Services />
+        <Team />
+        <Process />
+        <Projects />
+        <Cta />
+      </main>
+      <SiteFooter />
+      <ScrollReveal />
+    </>
   );
 }

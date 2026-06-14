@@ -137,7 +137,6 @@ export function HeroCarousel() {
                 }}
                 className="car-card"
                 style={{
-                  backgroundColor: card.bg,
                   transform: `rotateY(${i * dims.step}deg) translateZ(${-dims.radius}px)`,
                 }}
               >
@@ -147,7 +146,7 @@ export function HeroCarousel() {
                     alt={card.name}
                     fill
                     sizes="(max-width: 640px) 40vw, 16vw"
-                    className="object-contain"
+                    className="object-cover"
                   />
                 </span>
               </div>

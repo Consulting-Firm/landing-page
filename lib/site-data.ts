@@ -38,10 +38,8 @@ export interface Project {
 export interface HeroCard {
   /** Company name — used as the image alt text. */
   name: string;
-  /** Logo SVG in /public. */
+  /** Self-contained logo tile in /public (background baked into the SVG). */
   img: string;
-  /** Tile colour behind the logo (matches the logo's own background). */
-  bg: string;
 }
 
 export const NAV_LINKS = [
@@ -182,13 +180,13 @@ export const PROJECTS: Project[] = [
  * wall. Files live in /public.
  */
 export const HERO_CARDS: HeroCard[] = [
-  { name: "Adobe", img: "/adobe.svg", bg: "#ed1000" },
-  { name: "Deutsche Bank", img: "/deutsche-bank.svg", bg: "#ffffff" },
-  // { name: "ByteSchool", img: "/byteschool.svg", bg: "#fbe18a" },
-  { name: "eSolutions", img: "/esolutions.svg", bg: "#ffffff" },
-  { name: "Upwork", img: "/upwork.svg", bg: "#14a800" },
-  { name: "safeINIT", img: "/safeinit.svg", bg: "#ffffff" },
-  { name: "Softwire", img: "/softwire.svg", bg: "#ffffff" },
+  { name: "Adobe", img: "/adobe.svg" },
+  { name: "Deutsche Bank", img: "/deutsche-bank.svg" },
+  // { name: "ByteSchool", img: "/byteschool.svg" },
+  { name: "eSolutions", img: "/esolutions.svg" },
+  { name: "Upwork", img: "/upwork.svg" },
+  { name: "safeINIT", img: "/safeinit.svg" },
+  { name: "Softwire", img: "/softwire.svg" },
 ];
 
 export const CONTACT_EMAIL = "hello@axon.studio";

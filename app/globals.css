@@ -206,17 +206,22 @@
   left: calc(var(--cw, 300px) / -2);
   top: calc(var(--ch, 380px) / -2);
   border-radius: calc(var(--cw, 300px) * 0.08);
-  /* Per-card brand colour (set inline); this is just the fallback. */
-  background: #fff;
   backface-visibility: hidden;
   will-change: transform, opacity;
   user-select: none;
   overflow: hidden;
 }
-/* Logo fills the tile, kept whole by object-contain, with a touch of clear space. */
+/* The SVG is a self-contained tile (background + centred logo baked in), so it
+   fills the card edge to edge. The card sits in a 3D-transformed layer where the
+   parent's rounded overflow clip is unreliable, so round the image itself. */
 .car-logo {
   position: absolute;
-  inset: 8%;
+  inset: 0;
+  border-radius: calc(var(--cw, 300px) * 0.08);
+  overflow: hidden;
+}
+.car-logo img {
+  border-radius: inherit;
 }
 
 /* --- Services: animated visualisations --- */

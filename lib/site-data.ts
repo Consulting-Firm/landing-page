@@ -189,4 +189,4 @@ export const HERO_CARDS: HeroCard[] = [
   { name: "Softwire", img: "/softwire.svg" },
 ];
 
-export const CONTACT_EMAIL = "hello@axon.studio";
+export const CONTACT_EMAIL = "hello@archthorpe.com";

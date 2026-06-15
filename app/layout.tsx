@@ -18,7 +18,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Axon — Software Consultancy",
+  title: "Archthorpe — Software Consultancy",
   description:
     "Senior hands, end to end. Three founders building durable software — product engineering, cloud, data & AI.",
 };

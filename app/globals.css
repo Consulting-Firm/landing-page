@@ -12,7 +12,7 @@
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-instrument-sans);
 
-  /* Axon design palette — namespaced so shadcn's semantic tokens stay intact.
+  /* Archthorpe design palette — namespaced so shadcn's semantic tokens stay intact.
      Generates utilities like bg-ax-panel, text-ax-accent, border-ax-line. */
   --color-ax-bg: var(--ax-bg);
   --color-ax-panel: var(--ax-panel);
@@ -61,7 +61,7 @@
 }
 
 :root {
-  /* Axon raw token values (see @theme inline for the Tailwind mapping). */
+  /* Archthorpe raw token values (see @theme inline for the Tailwind mapping). */
   --ax-bg: #0a0a0a;
   --ax-panel: #111110;
   --ax-panel-2: #161614;
@@ -149,7 +149,7 @@
     scroll-behavior: smooth;
   }
   body {
-    /* This site is a single dark landing page, so the Axon palette is the
+    /* This site is a single dark landing page, so the Archthorpe palette is the
        default surface rather than shadcn's light theme. */
     background: var(--ax-bg);
     color: var(--ax-ink);
@@ -162,7 +162,7 @@
 }
 
 /* ============================================================================
-   Axon bespoke visuals
+   Archthorpe bespoke visuals
    Layout, type and colour live in the components as Tailwind utilities. Only
    the things Tailwind can't express cleanly — 3D transforms, keyframes and
    pseudo-element decoration — are defined here, ported from the design source.

@@ -12,7 +12,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-ax-line pt-[38px] pb-[60px]">
       <Container className="flex items-center justify-between text-[14px] text-ax-faint max-[980px]:flex-col max-[980px]:gap-4">
-        <span>© 2026 Axon Consultancy</span>
+        <span>© 2026 Archthorpe</span>
         <div className="flex gap-7">
           {FOOTER_LINKS.map((link) => (
             <a

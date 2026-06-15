@@ -26,6 +26,9 @@ export function HeroCarousel() {
   const trackRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [dims, setDims] = useState<Dims | null>(null);
+  // Rotation lives in a ref so it survives a dims change (resize) instead of
+  // snapping back to 0 when the animation effect below re-runs.
+  const angleRef = useRef(0);
 
   // Size the tube from the viewport; derive the card count from the
   // circumference so spacing stays even however large the tube grows.
@@ -46,8 +49,14 @@ export function HeroCarousel() {
     }
 
     compute();
+    let lastW = window.innerWidth;
     let timer: ReturnType<typeof setTimeout>;
     function onResize() {
+      // Mobile browsers fire `resize` when the URL bar shows/hides on scroll,
+      // changing only innerHeight. Recompute on width change alone — otherwise
+      // the dims object is replaced on every scroll, restarting the animation.
+      if (window.innerWidth === lastW) return;
+      lastW = window.innerWidth;
       clearTimeout(timer);
       timer = setTimeout(compute, 150);
     }
@@ -68,7 +77,6 @@ export function HeroCarousel() {
     ).matches;
     const baseAngle = Array.from({ length: count }, (_, i) => i * step);
 
-    let angle = 0;
     let last: number | null = null;
     let speed = 0;
     let raf = 0;
@@ -80,7 +88,8 @@ export function HeroCarousel() {
 
       const target = reduced ? 0 : 3 * MOTION; // deg/sec — slow drift
       speed += (target - speed) * Math.min(dt * 4, 1);
-      angle = (angle - speed * dt) % 360;
+      const angle = (angleRef.current - speed * dt) % 360;
+      angleRef.current = angle;
 
       if (trackRef.current) {
         trackRef.current.style.transform = `translateZ(${radius}px) rotateY(${angle}deg)`;

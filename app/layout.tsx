@@ -20,7 +20,7 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: "Archthorpe",
   description:
-    "Senior hands, end to end. Three founders building durable software — product engineering, cloud, data & AI.",
+    "Professional developers, end to end. Three founders building durable software — product engineering, cloud, data & AI.",
 };
 
 export default function RootLayout({

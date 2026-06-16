@@ -15,7 +15,7 @@ export function Services() {
         <div className="rv mx-auto mb-16 max-w-[760px] text-center">
           <Kicker>What we do</Kicker>
           <SectionTitle>
-            Senior hands, <Em>end to end</Em>
+            Professional developers, <Em>end to end</Em>
           </SectionTitle>
         </div>
 

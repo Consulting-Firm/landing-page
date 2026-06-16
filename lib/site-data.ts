@@ -18,7 +18,6 @@ export interface TeamMember {
   role: string;
   bio: string;
   skills: string[];
-  work: { project: string; meta: string }[];
 }
 
 export interface ProcessStep {
@@ -82,37 +81,25 @@ export const TEAM: TeamMember[] = [
     initials: "SO",
     photo: "/sorin.jpg",
     name: "Sorin",
-    role: "Co-founder · Engineering Lead",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    skills: ["TypeScript", "React", "Node.js", "AWS", "Postgres"],
-    work: [
-      { project: "Project Lorem", meta: "Fintech · 2025" },
-      { project: "Project Ipsum", meta: "Logistics · 2024" },
-    ],
+    role: "Fullstack Developer · Frontend Expertise",
+    bio: "Software engineer at Adobe working on the Activate team in GenStudio for Performance Marketing. Ships features end to end — React frontends through Node.js services — with a strong eye for product and UX, and experience working in startup environments.",
+    skills: ["TypeScript", "React", "Node.js", "Java", "PostgreSQL", "Docker"],
   },
   {
     initials: "CA",
     photo: "/catalin.jpg",
     name: "Catalin",
-    role: "Co-founder · Product & Strategy",
+    role: "Backend Developer · AI Pipelines Expertise",
     bio: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute.",
     skills: ["Product discovery", "UX", "Roadmapping", "Analytics"],
-    work: [
-      { project: "Project Dolor", meta: "Retail · 2025" },
-      { project: "Project Amet", meta: "SaaS · 2023" },
-    ],
   },
   {
     initials: "CI",
     photo: "/ciprian.jpg",
     name: "Ciprian",
-    role: "Co-founder · Data & AI",
+    role: "Backend & DevOps Engineer · AWS Expertise",
     bio: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint.",
     skills: ["Python", "LLMs", "MLOps", "Data pipelines"],
-    work: [
-      { project: "Project Sed", meta: "Healthcare · 2025" },
-      { project: "Project Tempor", meta: "Energy · 2024" },
-    ],
   },
 ];
 

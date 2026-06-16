@@ -2,7 +2,6 @@ import { Container } from "@/components/container";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { Em, Kicker, SectionTitle } from "@/components/typography";
 import { TEAM } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
@@ -64,18 +63,6 @@ export function Team() {
                 ))}
               </div>
 
-              <Separator className="mt-6 bg-ax-line" />
-              <div className="mt-[18px] grid gap-2.5">
-                {member.work.map((item) => (
-                  <div
-                    key={item.project}
-                    className="flex justify-between text-[14px]"
-                  >
-                    <b className="font-semibold">{item.project}</b>
-                    <span className="text-ax-faint">{item.meta}</span>
-                  </div>
-                ))}
-              </div>
             </Card>
           ))}
         </div>

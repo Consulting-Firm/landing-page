@@ -30,7 +30,12 @@ export interface Project {
   name: string;
   tags: string[];
   description: string;
-  results: { value: string; label: string }[];
+  /** Team member name(s) credited on the project — must match TEAM[].name. */
+  people: string[];
+  /** The person's role on this specific engagement. */
+  role: string;
+  /** Engagement window, e.g. { start: "Jan 2025", end: "Present" }. */
+  timeframe: { start: string; end: string };
   /** Card background — projects are the one light surface on a dark page. */
   background: string;
 }
@@ -45,8 +50,8 @@ export interface HeroCard {
 export const NAV_LINKS = [
   { href: "#services", label: "Services" },
   { href: "#team", label: "Team" },
-  { href: "#process", label: "Process" },
   { href: "#work", label: "Work" },
+  { href: "#process", label: "Process" },
 ] as const;
 
 export const SERVICES: Service[] = [
@@ -77,12 +82,12 @@ export const SERVICES: Service[] = [
 
 export const TEAM: TeamMember[] = [
   {
-    initials: "SO",
-    photo: "/sorin.jpg",
-    name: "Sorin",
-    role: "Fullstack Developer · Frontend Expertise",
-    bio: "Software engineer at Adobe working on the Activate team in GenStudio for Performance Marketing. Ships features end to end — React frontends through Node.js services — with a strong eye for product and UX, and experience working in startup environments.",
-    skills: ["TypeScript", "React", "Node.js", "Java", "PostgreSQL", "Docker"],
+    initials: "CI",
+    photo: "/ciprian.jpg",
+    name: "Ciprian",
+    role: "Backend & DevOps Engineer · AWS Expertise",
+    bio: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint.",
+    skills: ["Python", "LLMs", "MLOps", "Data pipelines"],
   },
   {
     initials: "CA",
@@ -93,12 +98,12 @@ export const TEAM: TeamMember[] = [
     skills: ["Product discovery", "UX", "Roadmapping", "Analytics"],
   },
   {
-    initials: "CI",
-    photo: "/ciprian.jpg",
-    name: "Ciprian",
-    role: "Backend & DevOps Engineer · AWS Expertise",
-    bio: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint.",
-    skills: ["Python", "LLMs", "MLOps", "Data pipelines"],
+    initials: "SO",
+    photo: "/sorin.jpg",
+    name: "Sorin",
+    role: "Fullstack Developer · Frontend Expertise",
+    bio: "Software engineer at Adobe working on the Activate team in GenStudio for Performance Marketing. Ships features end to end — React frontends through Node.js services — with a strong eye for product and UX, and experience working in startup environments.",
+    skills: ["TypeScript", "React", "Node.js", "Java", "PostgreSQL", "Docker"],
   },
 ];
 
@@ -131,36 +136,33 @@ export const PROCESS: ProcessStep[] = [
 
 export const PROJECTS: Project[] = [
   {
-    name: "Nordwind Platform",
-    tags: ["Fintech", "Platform rebuild", "2025"],
+    name: "Adobe — GenStudio",
+    tags: ["React", "Node.js (Fastify)", "BullMQ", "TypeScript"],
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua veniam.",
-    results: [
-      { value: "3×", label: "faster releases" },
-      { value: "−42%", label: "infra cost" },
-    ],
+      "Software Engineer on the Activate team in GenStudio for Performance Marketing. Contributed to the launch of Google CM360, LinkedIn Ads, Innovid, and YouTube activation, built the full LinkedIn organic publishing flow, delivered HTML5 ad support end to end, and migrated Meta video ads from Airflow to BullMQ.",
+    people: ["Sorin"],
+    role: "Software Engineer",
+    timeframe: { start: "Jan 2025", end: "Present" },
     background: "#8ee4f2",
   },
   {
-    name: "PayCore Console",
-    tags: ["Payments", "Greenfield build", "2024"],
+    name: "Adobe — Experimentation",
+    tags: ["Java", "Spring", "PostgreSQL"],
     description:
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure.",
-    results: [
-      { value: "6 wks", label: "to first launch" },
-      { value: "99.99%", label: "uptime since" },
-    ],
+      "Software Engineer Intern on the Experience Optimization team, working on the Experimentation Admin — a Java Spring backend for configuring A/B experiments. Working with Java 11/21, JUnit, Docker, Prometheus, and Grafana.",
+    people: ["Sorin"],
+    role: "Software Engineer Intern",
+    timeframe: { start: "Jul 2024", end: "Jan 2025" },
     background: "#cdeb8b",
   },
   {
-    name: "Verda Mobile",
-    tags: ["Healthcare", "iOS · Android", "2024"],
+    name: "Softwire — Compor",
+    tags: ["TypeScript", "React", "Express", "PostgreSQL"],
     description:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat.",
-    results: [
-      { value: "4.8★", label: "store rating" },
-      { value: "120k", label: "monthly users" },
-    ],
+      "Full-Stack Software Engineer Intern on the Compor app, an end-to-end HR and payroll solution. Built frontend components with React and Material-UI and worked the backend with Express, Yup validation, and Knex.js migrations into PostgreSQL.",
+    people: ["Sorin"],
+    role: "Full-Stack Engineer Intern",
+    timeframe: { start: "Jul 2023", end: "Sep 2023" },
     background: "#f0e7cf",
   },
 ];

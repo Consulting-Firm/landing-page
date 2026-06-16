@@ -1,17 +1,20 @@
 import { Container } from "@/components/container";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Em, Kicker, SectionTitle } from "@/components/typography";
 import { ProjectShot } from "@/components/sections/project-shot";
-import { PROJECTS } from "@/lib/site-data";
+import { PROJECTS, TEAM } from "@/lib/site-data";
+
+const memberByName = new Map(TEAM.map((member) => [member.name, member]));
 
 export function Projects() {
   return (
     <section id="work" className="py-[130px] max-[980px]:py-[90px]">
       <Container>
         <div className="rv mb-16 max-w-[760px]">
-          <Kicker>Selected work</Kicker>
+          <Kicker>Our work</Kicker>
           <SectionTitle>
-            Projects that <Em>shipped</Em>
+            Projects we&apos;ve <Em>worked on</Em>
           </SectionTitle>
         </div>
 
@@ -39,17 +42,51 @@ export function Projects() {
                 <p className="mt-[22px] max-w-[44ch] text-base leading-[1.6] opacity-[0.78]">
                   {project.description}
                 </p>
-                <div className="mt-auto flex gap-9 pt-[26px]">
-                  {project.results.map((result) => (
-                    <div key={result.label}>
-                      <b className="block text-[30px] font-bold tracking-[-0.02em]">
-                        {result.value}
-                      </b>
-                      <span className="text-[13px] opacity-[0.65]">
-                        {result.label}
-                      </span>
+
+                <div className="mt-auto flex flex-wrap items-end justify-between gap-5 border-t border-black/10 pt-7 max-[520px]:flex-col max-[520px]:items-start">
+                  <div className="flex items-center gap-3.5">
+                    <div className="flex -space-x-2.5">
+                      {project.people.map((personName) => {
+                        const member = memberByName.get(personName);
+                        return (
+                          <Avatar
+                            key={personName}
+                            className="size-11 ring-2 ring-black/10 after:hidden"
+                          >
+                            <AvatarImage
+                              src={member?.photo}
+                              alt={member?.name ?? personName}
+                            />
+                            <AvatarFallback className="avatar-gradient text-sm font-bold tracking-[-0.02em] text-[#0a0a0a]">
+                              {member?.initials ?? personName.slice(0, 2)}
+                            </AvatarFallback>
+                          </Avatar>
+                        );
+                      })}
                     </div>
-                  ))}
+                    <div>
+                      <div className="text-[11px] font-semibold tracking-[0.08em] uppercase opacity-[0.55]">
+                        Worked on by
+                      </div>
+                      <div className="text-[15px] font-bold tracking-[-0.01em]">
+                        {project.people.join(" & ")}
+                      </div>
+                      <div className="text-[12px] opacity-[0.6]">
+                        {project.role}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="max-[520px]:text-left text-right">
+                    <div className="text-[11px] font-semibold tracking-[0.08em] uppercase opacity-[0.55]">
+                      Timeframe
+                    </div>
+                    <div className="mt-1 text-[15px] font-bold tracking-[-0.01em]">
+                      {project.timeframe.start}
+                      <span className="px-1.5 opacity-[0.45]">—</span>
+                      {project.timeframe.end}
+                    </div>
+                  </div>
                 </div>
               </div>
 

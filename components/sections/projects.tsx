@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { Container } from "@/components/container";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -90,7 +92,22 @@ export function Projects() {
                 </div>
               </div>
 
-              <ProjectShot index={i} />
+              {project.image ? (
+                <div className="macbook">
+                  <div className="mb-screen">
+                    <Image
+                      src={project.image}
+                      alt={project.imageAlt ?? `${project.name} screenshot`}
+                      fill
+                      sizes="(max-width: 980px) 100vw, 460px"
+                      className="mb-img"
+                    />
+                  </div>
+                  <span className="mb-notch" aria-hidden="true" />
+                </div>
+              ) : (
+                <ProjectShot index={i} />
+              )}
             </article>
           ))}
         </div>

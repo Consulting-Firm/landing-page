@@ -10,8 +10,7 @@ import { useEffect } from "react";
  */
 export function ScrollReveal() {
   useEffect(() => {
-    const elements =
-      document.querySelectorAll<HTMLElement>(".rv, .step");
+    const elements = document.querySelectorAll<HTMLElement>(".rv, .step");
     if (elements.length === 0) return;
 
     const observer = new IntersectionObserver(

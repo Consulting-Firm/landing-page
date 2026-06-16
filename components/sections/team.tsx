@@ -62,7 +62,6 @@ export function Team() {
                   </Badge>
                 ))}
               </div>
-
             </Card>
           ))}
         </div>

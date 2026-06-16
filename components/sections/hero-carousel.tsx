@@ -43,7 +43,7 @@ export function HeroCarousel() {
       // Round the slot count to a whole number of logo sets so the cycle wraps
       // cleanly. Otherwise the last slot repeats the first logo and the two land
       // next to each other at the seam (e.g. two Adobes side by side).
-      const count = Math.max(6, Math.round((2 * Math.PI * radius) / arc));                                         
+      const count = Math.max(6, Math.round((2 * Math.PI * radius) / arc));
       const step = 360 / count;
       setDims({ cardW, cardH, radius, step, count });
     }

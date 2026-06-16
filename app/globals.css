@@ -251,7 +251,8 @@
     color-mix(in srgb, var(--ax-accent) 30%, transparent),
     transparent 75%
   );
-  animation: ax-floaty calc(5s / max(var(--ax-motion), 0.15)) ease-in-out infinite;
+  animation: ax-floaty calc(5s / max(var(--ax-motion), 0.15)) ease-in-out
+    infinite;
 }
 .viz-stack .d-b {
   width: 250px;
@@ -281,7 +282,12 @@
   height: 140px;
   transform: translateX(-50%);
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #f4f2ec, #b9b7b0 45%, #4c4b47 80%);
+  background: radial-gradient(
+    circle at 35% 30%,
+    #f4f2ec,
+    #b9b7b0 45%,
+    #4c4b47 80%
+  );
   box-shadow:
     0 30px 60px rgba(0, 0, 0, 0.6),
     0 0 50px color-mix(in srgb, var(--ax-accent) 22%, transparent);
@@ -295,7 +301,8 @@
   width: 320px;
   height: 320px;
   top: 30px;
-  animation: ax-spin-flat calc(14s / max(var(--ax-motion), 0.15)) linear infinite;
+  animation: ax-spin-flat calc(14s / max(var(--ax-motion), 0.15)) linear
+    infinite;
 }
 .viz-orb .d-b {
   width: 400px;
@@ -324,8 +331,8 @@
   width: 220px;
   height: 220px;
   top: 55px;
-  animation: ax-spin-flat calc(15s / max(var(--ax-motion), 0.15)) linear infinite
-    reverse;
+  animation: ax-spin-flat calc(15s / max(var(--ax-motion), 0.15)) linear
+    infinite reverse;
   border-style: dashed;
 }
 .viz-rings .d-c {
@@ -343,7 +350,8 @@
   border-radius: 50%;
   background: var(--ax-accent);
   box-shadow: 0 0 40px var(--ax-accent);
-  animation: ax-floaty calc(4s / max(var(--ax-motion), 0.15)) ease-in-out infinite;
+  animation: ax-floaty calc(4s / max(var(--ax-motion), 0.15)) ease-in-out
+    infinite;
 }
 /* layered planes */
 .viz-planes .plane {

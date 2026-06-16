@@ -70,8 +70,7 @@ export const SERVICES: Service[] = [
   },
   {
     title: "Strategy & Design",
-    description:
-      "Sharp scoping, honest roadmaps, and interfaces people trust.",
+    description: "Sharp scoping, honest roadmaps, and interfaces people trust.",
     viz: "rings",
   },
 ];

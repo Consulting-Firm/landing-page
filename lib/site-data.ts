@@ -191,6 +191,7 @@ export const HERO_CARDS: HeroCard[] = [
   { name: "Upwork", img: "/upwork.svg" },
   { name: "safeINIT", img: "/safeinit.svg" },
   { name: "Softwire", img: "/softwire.svg" },
+  { name: "ING Hubs", img: "/ing-hubs.svg" },
 ];
 
 export const CONTACT_EMAIL = "hello@archthorpe.com";

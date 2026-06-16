@@ -13,6 +13,7 @@ export interface Service {
 
 export interface TeamMember {
   initials: string;
+  photo: string;
   name: string;
   role: string;
   bio: string;
@@ -79,6 +80,7 @@ export const SERVICES: Service[] = [
 export const TEAM: TeamMember[] = [
   {
     initials: "SO",
+    photo: "/sorin.jpg",
     name: "Sorin",
     role: "Co-founder · Engineering Lead",
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -90,6 +92,7 @@ export const TEAM: TeamMember[] = [
   },
   {
     initials: "CA",
+    photo: "/catalin.jpg",
     name: "Catalin",
     role: "Co-founder · Product & Strategy",
     bio: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute.",
@@ -101,6 +104,7 @@ export const TEAM: TeamMember[] = [
   },
   {
     initials: "CI",
+    photo: "/ciprian.jpg",
     name: "Ciprian",
     role: "Co-founder · Data & AI",
     bio: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint.",

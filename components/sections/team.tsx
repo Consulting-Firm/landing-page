@@ -1,5 +1,5 @@
 import { Container } from "@/components/container";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -35,6 +35,7 @@ export function Team() {
             >
               <div className="team-avatar mb-[26px]">
                 <Avatar className="size-24 after:hidden">
+                  <AvatarImage src={member.photo} alt={member.name} />
                   <AvatarFallback className="avatar-gradient text-3xl font-bold tracking-[-0.02em] text-[#0a0a0a]">
                     {member.initials}
                   </AvatarFallback>

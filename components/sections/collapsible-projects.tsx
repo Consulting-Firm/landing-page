@@ -21,7 +21,7 @@ export function CollapsibleProjects({
 
       {!expanded ? (
         <div className="pointer-events-none absolute inset-x-0 bottom-0 flex h-[240px] items-end justify-center">
-          <div className="absolute inset-0 backdrop-blur-sm [mask-image:linear-gradient(to_bottom,transparent_0%,black_70%)]" />
+          <div className="absolute inset-0 backdrop-blur-[3px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_70%)]" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ax-bg/40 to-ax-bg" />
           <button
             type="button"

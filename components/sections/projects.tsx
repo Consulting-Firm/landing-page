@@ -28,9 +28,14 @@ export function Projects() {
               style={{ background: project.background }}
             >
               <div className="flex flex-col p-[52px]">
-                <h3 className="text-[40px] font-bold tracking-[-0.03em]">
+                <h3 className="text-[34px] leading-[1.1] font-bold tracking-[-0.03em]">
                   {project.name}
                 </h3>
+                {project.subtitle ? (
+                  <p className="mt-0.5 text-[16px] font-medium opacity-[0.6]">
+                    {project.subtitle}
+                  </p>
+                ) : null}
                 <div className="mt-4 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <Badge
@@ -99,7 +104,7 @@ export function Projects() {
                       src={project.image}
                       alt={project.imageAlt ?? `${project.name} screenshot`}
                       fill
-                      sizes="(max-width: 980px) 100vw, 460px"
+                      sizes="(max-width: 980px) 100vw, 540px"
                       className="mb-img"
                     />
                   </div>

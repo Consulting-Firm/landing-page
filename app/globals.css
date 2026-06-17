@@ -520,8 +520,8 @@
   align-self: end;
   justify-self: center;
   width: 100%;
-  max-width: 460px; /* fixed, narrower frame — identical on every card */
-  margin: 0 0 -22px 0;
+  max-width: 540px; /* fixed frame — identical on every card */
+  margin: 0 0 -40px 0;
   padding: 6px 6px 24px 6px; /* thin top/side bezel; the chin bleeds off-card */
   border-radius: 16px 16px 0 0; /* top corners only — bottom is square (bleeds off) */
   background: #0c0c0d;
@@ -561,7 +561,7 @@
   }
   .macbook {
     max-width: none;
-    margin: 8px 26px -18px 26px;
+    margin: 8px 26px -28px 26px;
   }
 }
 

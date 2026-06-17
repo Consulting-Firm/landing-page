@@ -2,6 +2,7 @@ import { Container } from "@/components/container";
 import { CtaButton } from "@/components/cta-button";
 import { Em } from "@/components/typography";
 import { HeroCarousel } from "@/components/sections/hero-carousel";
+import { CALENDLY_URL } from "@/lib/site-data";
 
 export function Hero() {
   return (
@@ -11,7 +12,12 @@ export function Hero() {
           We build <Em>software</Em> that moves business <Em>forward</Em>
         </h1>
         <div className="mt-7 flex justify-center gap-3.5">
-          <CtaButton href="#contact" size="big">
+          <CtaButton
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            size="big"
+          >
             Book a call
           </CtaButton>
           <CtaButton href="#work" size="big" variant="ghost">

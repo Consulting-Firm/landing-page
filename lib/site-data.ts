@@ -18,6 +18,8 @@ export interface TeamMember {
   role: string;
   bio: string;
   skills: string[];
+  /** Full LinkedIn profile URL, e.g. https://www.linkedin.com/in/handle. */
+  linkedin: string;
 }
 
 export interface ProcessStep {
@@ -100,6 +102,7 @@ export const TEAM: TeamMember[] = [
     role: "Backend & DevOps Engineer · AWS Expertise",
     bio: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint.",
     skills: ["Python", "LLMs", "MLOps", "Data pipelines"],
+    linkedin: "https://www.linkedin.com/in/pirvuciprian/",
   },
   {
     initials: "CA",
@@ -108,6 +111,7 @@ export const TEAM: TeamMember[] = [
     role: "Backend Developer · AI Pipelines Expertise",
     bio: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute.",
     skills: ["Product discovery", "UX", "Roadmapping", "Analytics"],
+    linkedin: "https://www.linkedin.com/in/nickcatalin/",
   },
   {
     initials: "SO",
@@ -116,6 +120,7 @@ export const TEAM: TeamMember[] = [
     role: "Fullstack Developer · Frontend Expertise",
     bio: "Software engineer at Adobe working on the Activate team in GenStudio for Performance Marketing. Ships features end to end — React frontends through Node.js services — with a strong eye for product and UX, and experience working in startup environments.",
     skills: ["TypeScript", "React", "Node.js", "Java", "PostgreSQL", "Docker"],
+    linkedin: "https://www.linkedin.com/in/sorin-barbu/",
   },
 ];
 

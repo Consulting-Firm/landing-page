@@ -5,29 +5,22 @@ import { Em, Kicker, SectionTitle } from "@/components/typography";
 import { ProjectShot } from "@/components/sections/project-shot";
 import { ProjectShowcase } from "@/components/sections/project-showcase";
 import { ProjectDescription } from "@/components/sections/project-description";
+import { CollapsibleProjects } from "@/components/sections/collapsible-projects";
 import { PROJECTS, TEAM } from "@/lib/site-data";
 
 const memberByName = new Map(TEAM.map((member) => [member.name, member]));
 
-export function Projects() {
-  return (
-    <section id="work" className="py-[130px] max-[980px]:py-[90px]">
-      <Container>
-        <div className="rv mb-16 max-w-[760px]">
-          <Kicker>Our work</Kicker>
-          <SectionTitle>
-            Projects we&apos;ve <Em>worked on</Em>
-          </SectionTitle>
-        </div>
+const VISIBLE_COUNT = 10;
 
-        <div className="grid gap-7">
-          {PROJECTS.map((project, i) => (
-            <article
-              key={project.name}
-              className="rv grid min-h-[420px] grid-cols-[1fr_1.15fr] overflow-hidden rounded-[32px] text-[#101010] max-[980px]:grid-cols-1"
-              style={{ background: project.background }}
-            >
-              <div className="flex flex-col p-[52px]">
+type Project = (typeof PROJECTS)[number];
+
+function ProjectCard({ project, i }: { project: Project; i: number }) {
+  return (
+    <article
+      className="rv grid min-h-[420px] grid-cols-[1fr_1.15fr] overflow-hidden rounded-[32px] text-[#101010] max-[980px]:grid-cols-1"
+      style={{ background: project.background }}
+    >
+      <div className="flex flex-col p-[52px]">
                 <h3 className="text-[34px] leading-[1.1] font-bold tracking-[-0.03em]">
                   {project.name}
                 </h3>
@@ -95,20 +88,52 @@ export function Projects() {
                 </div>
               </div>
 
-              {project.image ? (
-                <ProjectShowcase
-                  name={project.name}
-                  image={project.image}
-                  alt={project.imageAlt}
-                  url={project.url}
-                  index={i}
-                />
-              ) : (
-                <ProjectShot index={i} />
-              )}
-            </article>
+      {project.image ? (
+        <ProjectShowcase
+          name={project.name}
+          image={project.image}
+          alt={project.imageAlt}
+          url={project.url}
+          index={i}
+        />
+      ) : (
+        <ProjectShot index={i} />
+      )}
+    </article>
+  );
+}
+
+export function Projects() {
+  const visible = PROJECTS.slice(0, VISIBLE_COUNT);
+  const hidden = PROJECTS.slice(VISIBLE_COUNT);
+
+  return (
+    <section id="work" className="py-[130px] max-[980px]:py-[90px]">
+      <Container>
+        <div className="rv mb-16 max-w-[760px]">
+          <Kicker>Our work</Kicker>
+          <SectionTitle>
+            Projects we&apos;ve <Em>worked on</Em>
+          </SectionTitle>
+        </div>
+
+        <div className="grid gap-7">
+          {visible.map((project, i) => (
+            <ProjectCard key={project.name} project={project} i={i} />
           ))}
         </div>
+
+        {hidden.length > 0 ? (
+          <CollapsibleProjects>
+            {hidden.map((project, i) => (
+              <ProjectCard
+                key={project.name}
+                project={project}
+                i={i + VISIBLE_COUNT}
+              />
+            ))}
+          </CollapsibleProjects>
+        ) : null}
       </Container>
     </section>
   );

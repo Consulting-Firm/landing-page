@@ -1,10 +1,24 @@
+import { ArrowUpRight } from "lucide-react";
+
 import { Container } from "@/components/container";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Em, Kicker, SectionTitle } from "@/components/typography";
 import { TEAM } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
+
+function LinkedInIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+    </svg>
+  );
+}
 
 const DELAYS = ["", "d1", "d2"];
 
@@ -51,16 +65,20 @@ export function Team() {
                 {member.bio}
               </p>
 
-              <div className="mt-5 flex flex-wrap gap-2">
-                {member.skills.map((skill) => (
-                  <Badge
-                    key={skill}
-                    variant="outline"
-                    className="h-auto rounded-full border-ax-line px-3 py-1.5 text-[13px] font-medium text-ax-ink"
-                  >
-                    {skill}
-                  </Badge>
-                ))}
+              <div className="mt-auto pt-7">
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`View ${member.name} on LinkedIn`}
+                  className="group/li inline-flex items-center gap-2 text-[14px] font-medium text-ax-muted transition-colors duration-300 hover:text-ax-accent"
+                >
+                  <LinkedInIcon className="size-[18px]" />
+                  <span className="underline decoration-ax-line decoration-1 underline-offset-4 transition-colors duration-300 group-hover/li:decoration-ax-accent">
+                    View on LinkedIn
+                  </span>
+                  <ArrowUpRight className="relative top-[2px] -ml-1 size-4 transition-transform duration-300 group-hover/li:translate-x-0.5 group-hover/li:-translate-y-0.5" />
+                </a>
               </div>
             </Card>
           ))}

@@ -101,6 +101,7 @@ export function Projects() {
                   image={project.image}
                   alt={project.imageAlt}
                   url={project.url}
+                  index={i}
                 />
               ) : (
                 <ProjectShot index={i} />

@@ -9,26 +9,46 @@ function prettyDomain(url: string): string {
 }
 
 /**
+ * Four corner tilt presets, cycled by index: top-left, bottom-left,
+ * bottom-right, top-right, then repeat. Full static class strings so Tailwind
+ * JIT picks them up. All straighten on hover and flatten below 980px.
+ */
+const TILTS = [
+  "[transform:rotateX(8deg)_rotateY(-6deg)] hover:[transform:rotateX(0deg)_rotateY(0deg)_translateY(-6px)] max-[980px]:[transform:none]",
+  "[transform:rotateX(-8deg)_rotateY(-6deg)] hover:[transform:rotateX(0deg)_rotateY(0deg)_translateY(-6px)] max-[980px]:[transform:none]",
+  
+  "[transform:rotateX(-8deg)_rotateY(6deg)] hover:[transform:rotateX(0deg)_rotateY(0deg)_translateY(-6px)] max-[980px]:[transform:none]",
+  
+  "[transform:rotateX(8deg)_rotateY(6deg)] hover:[transform:rotateX(0deg)_rotateY(0deg)_translateY(-6px)] max-[980px]:[transform:none]",
+];
+
+/**
  * Floating browser-style window that showcases a project screenshot.
- * Traffic-light chrome, a URL pill, a soft accent glow behind, a subtle 3D tilt
- * that straightens on hover, and a glossy top reflection. When `url` is set the
- * whole window becomes a link that opens the live site in a new tab.
+ * Traffic-light chrome, a URL pill, a soft accent glow behind, a per-corner 3D
+ * tilt (driven by `index`) that straightens on hover, and a glossy top
+ * reflection. When `url` is set the whole window becomes a link that opens the
+ * live site in a new tab.
  */
 export function ProjectShowcase({
   name,
   image,
   alt,
   url,
+  index = 0,
 }: {
   name: string;
   image: string;
   alt?: string;
   url?: string;
+  index?: number;
 }) {
   const label = url ? prettyDomain(url) : name.toLowerCase().replace(/\s+/g, "");
+  const tilt = TILTS[index % TILTS.length];
 
   const window = (
-    <figure className="group relative w-full max-w-[560px] origin-center transition-transform duration-500 ease-out [transform:rotateX(8deg)_rotateY(-6deg)] hover:[transform:rotateX(0deg)_rotateY(0deg)_translateY(-6px)] max-[980px]:[transform:none]">
+    <figure
+      className={`group relative w-full max-w-[560px] origin-center transition-transform duration-500 ease-out ${tilt}`}
+    >
       <div className="overflow-hidden rounded-2xl bg-[#0c0c0d] p-2.5 shadow-[0_30px_70px_rgba(0,0,0,0.45)] ring-1 ring-white/10">
         {/* window chrome */}
         <div className="flex items-center gap-2 px-2 pb-2.5 pt-1">

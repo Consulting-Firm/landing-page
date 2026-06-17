@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Em, Kicker, SectionTitle } from "@/components/typography";
 import { ProjectShot } from "@/components/sections/project-shot";
+import { ProjectDescription } from "@/components/sections/project-description";
 import { PROJECTS, TEAM } from "@/lib/site-data";
 
 const memberByName = new Map(TEAM.map((member) => [member.name, member]));
@@ -46,9 +47,7 @@ export function Projects() {
                     </Badge>
                   ))}
                 </div>
-                <p className="mt-[22px] max-w-[44ch] text-base leading-[1.6] opacity-[0.78]">
-                  {project.description}
-                </p>
+                <ProjectDescription text={project.description} />
 
                 <div className="mt-auto flex flex-wrap items-end justify-between gap-5 border-t border-black/10 pt-7 max-[520px]:flex-col max-[520px]:items-start">
                   <div className="flex items-center gap-3.5">

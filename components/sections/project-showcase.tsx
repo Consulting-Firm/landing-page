@@ -18,11 +18,11 @@ export function ProjectShowcase({
   domain?: string;
 }) {
   return (
-    <div className="relative flex items-center justify-center overflow-hidden p-10 [perspective:1600px] max-[980px]:px-7 max-[980px]:py-8">
-      {/* soft accent glow behind the window */}
+    <div className="relative flex items-center justify-center p-10 [perspective:1600px] max-[980px]:px-7 max-[980px]:py-8">
+      {/* soft blurred blob behind the window — no straight edge */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-10 rounded-[40px] bg-black/15 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[78%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-black/20 blur-[60px]"
       />
 
       <figure className="relative w-full max-w-[560px] origin-center transition-transform duration-500 ease-out [transform:rotateX(8deg)_rotateY(-6deg)] hover:[transform:rotateX(0deg)_rotateY(0deg)_translateY(-6px)] max-[980px]:[transform:none]">

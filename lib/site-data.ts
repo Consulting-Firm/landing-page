@@ -39,6 +39,8 @@ export interface Project {
   role: string;
   /** Engagement window, e.g. { start: "Jan 2025", end: "Present" }. */
   timeframe: { start: string; end: string };
+  /** Live site URL — shown in the showcase URL pill and opens on click. */
+  url?: string;
   /** Card background — projects are the one light surface on a dark page. */
   background: string;
   /**
@@ -150,6 +152,7 @@ export const PROCESS: ProcessStep[] = [
 export const PROJECTS: Project[] = [
   {
     name: "Adobe Agent Orchestration",
+    url: "https://example.com/adobe-agent-orchestration",
     subtitle: "Agent Orchestration & LLM Platform",
     tags: [
       "Python",
@@ -172,6 +175,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: "Adobe GenStudio",
+    url: "https://example.com/adobe-genstudio",
     subtitle: "Performance Marketing Activation",
     tags: ["React", "Node.js (Fastify)", "BullMQ", "TypeScript"],
     description:
@@ -187,6 +191,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: "Adobe Document Ingestion",
+    url: "https://example.com/adobe-document-ingestion",
     subtitle: "RAG Ingestion Platform",
     tags: [
       "Python",
@@ -209,6 +214,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: "Nine International",
+    url: "https://example.com/nine-international",
     subtitle: "BI & ESG Platform",
     tags: ["FastAPI", "PostgreSQL", "Neo4j", "Elasticsearch", "React"],
     description:
@@ -224,6 +230,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: "Spotlite",
+    url: "https://example.com/spotlite",
     subtitle: "Geospatial Mapping Platform",
     tags: [
       "Azure Container Apps",
@@ -245,6 +252,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: "BLNG",
+    url: "https://example.com/blng",
     subtitle: "Real-Time Collaboration Backend",
     tags: [
       "TypeScript",
@@ -266,6 +274,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: "Rudig Consultores",
+    url: "https://example.com/rudig-consultores",
     subtitle: "BESSMO · Battery Storage SaaS",
     tags: [
       "FastAPI",
@@ -287,6 +296,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: "CuriaSelf",
+    url: "https://alpha.curiaself.ch",
     subtitle: "Legislative Data Platform",
     tags: [
       "Docker Compose",
@@ -308,6 +318,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: "Netop",
+    url: "https://example.com/netop",
     subtitle: "Deployment Controller",
     tags: ["Node.js", "AWS ECS/ECR", "AWS SDK", "GitLab CI", "CloudWatch"],
     description:
@@ -326,6 +337,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: "SNPC",
+    url: "https://example.com/snpc",
     subtitle: "Postal Union Site",
     tags: [
       "Next.js 16",
@@ -347,6 +359,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: "Adobe Experimentation",
+    url: "https://example.com/adobe-experimentation",
     subtitle: "A/B Experimentation Platform",
     tags: ["Java", "Spring", "PostgreSQL"],
     description:
@@ -362,6 +375,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: "ByteSchool",
+    url: "https://example.com/byteschool",
     subtitle: "Coding School for Kids",
     tags: [
       "React",
@@ -384,6 +398,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: "Daily Dose of Code",
+    url: "https://example.com/daily-dose-of-code",
     subtitle: "AI Interview Prep Platform",
     tags: [
       "Vue.js",
@@ -406,6 +421,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: "Accounting Business Expert",
+    url: "https://example.com/accounting-business-expert",
     subtitle: "Fiscal Consultancy Site",
     tags: ["Next.js", "Tailwind CSS", "Tax calculator", "Responsive"],
     description:
@@ -421,6 +437,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: "IU Studio",
+    url: "https://example.com/iu-studio",
     subtitle: "Architecture Portfolio",
     tags: ["Next.js", "Tailwind CSS", "Editorial layout", "Responsive"],
     description:
@@ -436,6 +453,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: "Softwire Compor",
+    url: "https://example.com/softwire-compor",
     subtitle: "HR & Payroll Platform",
     tags: ["TypeScript", "React", "Express", "PostgreSQL"],
     description:
@@ -451,6 +469,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: "Valence Workout",
+    url: "https://example.com/valence-workout",
     subtitle: "AI Calisthenics Tracker",
     tags: [
       "React",
@@ -473,6 +492,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: "eSolutions.tech",
+    url: "https://example.com/esolutions-tech",
     subtitle: "Roomio & Trax Platforms",
     tags: ["Java", "Spring Boot", "Thymeleaf", "Groovy", "Argo"],
     description:
@@ -488,6 +508,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: "eSolutions Academy",
+    url: "https://example.com/esolutions-academy",
     subtitle: "IT Project Effort Estimator",
     tags: ["Java", "Spring Boot", "REST APIs"],
     description:

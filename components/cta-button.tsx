@@ -1,15 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+// Chamfered (cut-corner) blocks. A 200%-wide gradient sits parked off-screen
+// and slides in on hover, so the accent sweeps across the face left-to-right.
 const variants = {
-  solid: "bg-ax-ink text-[#0a0a0a] hover:bg-ax-accent",
+  solid:
+    "text-[#0a0a0a] bg-[linear-gradient(90deg,var(--ax-accent)_0_50%,var(--ax-ink)_50%_100%)] bg-[length:200%_100%] bg-[position:100%_0] hover:bg-[position:0_0]",
   ghost:
-    "bg-transparent text-ax-ink ring-1 ring-inset ring-ax-line hover:bg-ax-ink/[0.08]",
+    "text-ax-ink ring-1 ring-inset ring-ax-line bg-[linear-gradient(90deg,var(--ax-accent)_0_50%,transparent_50%_100%)] bg-[length:200%_100%] bg-[position:100%_0] hover:bg-[position:0_0] hover:text-[#0a0a0a] hover:ring-ax-accent",
 } as const;
 
 const sizes = {
-  default: "px-6 py-3.5 text-[15px]",
-  big: "px-[30px] py-4 text-base",
+  default: "px-7 py-3.5 text-[13px]",
+  big: "px-9 py-4 text-sm",
 } as const;
 
 type CtaButtonProps = React.ComponentProps<"a"> & {
@@ -31,7 +34,9 @@ export function CtaButton({
     <Button
       asChild
       className={cn(
-        "h-auto gap-2 rounded-full font-semibold ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:scale-[1.04]",
+        "h-auto gap-2 rounded-none font-semibold tracking-[0.14em] uppercase ease-[cubic-bezier(0.2,0.8,0.2,1)] duration-300",
+        "[clip-path:polygon(10px_0,100%_0,100%_calc(100%_-_10px),calc(100%_-_10px)_100%,0_100%,0_10px)]",
+        "hover:-translate-y-0.5",
         variants[variant],
         sizes[size],
         className,

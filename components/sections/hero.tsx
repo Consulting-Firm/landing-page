@@ -5,7 +5,7 @@ import { HeroCarousel } from "@/components/sections/hero-carousel";
 
 export function Hero() {
   return (
-    <header className="relative pt-[120px] text-center">
+    <header className="relative pt-[180px] text-center">
       <Container>
         <h1 className="mx-auto max-w-[16ch] text-[clamp(36px,4.7vw,70px)] leading-[1.04] font-medium tracking-[-0.03em] text-balance">
           We build <Em>software</Em> that moves business <Em>forward</Em>

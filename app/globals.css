@@ -170,7 +170,7 @@
 
 /* --- Hero: tuck the tall carousel up under the CTA row --- */
 .hero-visual {
-  margin-top: -4vw;
+  margin-top: 2vw;
 }
 @media (max-width: 640px) {
   .hero-visual {
@@ -202,9 +202,9 @@
 .car-card {
   position: absolute;
   width: var(--cw, 300px);
-  height: var(--ch, 380px);
+  height: var(--ch, 300px);
   left: calc(var(--cw, 300px) / -2);
-  top: calc(var(--ch, 380px) / -2);
+  top: calc(var(--ch, 300px) / -2);
   border-radius: calc(var(--cw, 300px) * 0.08);
   backface-visibility: hidden;
   will-change: transform, opacity;

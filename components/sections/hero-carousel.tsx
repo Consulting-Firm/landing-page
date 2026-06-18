@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { HERO_CARDS } from "@/lib/site-data";
 
-const ASPECT = 380 / 300; // card height ÷ width — preserved at every size
+const ASPECT = 1; // card height ÷ width — 1:1 square, preserved at every size
 const MOTION = 0.7;
 
 interface Dims {
@@ -35,7 +35,7 @@ export function HeroCarousel() {
   useEffect(() => {
     function compute() {
       const vmax = Math.max(window.innerWidth, window.innerHeight);
-      const cardW = Math.round(vmax * 0.155);
+      const cardW = Math.round(vmax * 0.1085);
       const cardH = Math.round(cardW * ASPECT);
       const gap = Math.round(cardW * 0.06);
       const arc = cardW + gap;

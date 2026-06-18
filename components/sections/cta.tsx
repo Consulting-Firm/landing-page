@@ -1,3 +1,4 @@
+import { BookCall } from "@/components/book-call";
 import { Container } from "@/components/container";
 import { CtaButton } from "@/components/cta-button";
 import { Em, SectionTitle } from "@/components/typography";
@@ -19,9 +20,7 @@ export function Cta() {
           team — and exactly what it would take.
         </p>
         <div className="rv d2 flex justify-center gap-3.5">
-          <CtaButton href={`mailto:${CONTACT_EMAIL}`} size="big">
-            Book a call
-          </CtaButton>
+          <BookCall size="big">Book a call</BookCall>
           <CtaButton
             href={`mailto:${CONTACT_EMAIL}`}
             size="big"

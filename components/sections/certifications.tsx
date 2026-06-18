@@ -77,13 +77,12 @@ export function Certifications() {
         <div className="rv max-w-[620px]">
           <Kicker>Verified on AWS</Kicker>
           <SectionTitle>
-            Nine certifications, <Em>independently</Em> verifiable.
+            Deep AWS expertise, <Em>independently</Em> verified.
           </SectionTitle>
-          <p className="mt-7 text-[16px] leading-relaxed text-ax-muted">
-            1 Professional · 1 Specialty · 5 Associate · 2 Foundational
-          </p>
-          <p className="mt-2.5 text-[14px] text-ax-faint">
-            Hover a badge, then tap to verify it on AWS.
+          <p className="mt-7 max-w-[44ch] text-[16px] leading-relaxed text-ax-muted">
+            Credentials spanning architecture, security, data, machine learning
+            and generative AI — each one links to its official AWS verification
+            record.
           </p>
         </div>
 

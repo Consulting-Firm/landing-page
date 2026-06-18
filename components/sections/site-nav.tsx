@@ -1,4 +1,4 @@
-import { CtaButton } from "@/components/cta-button";
+import { BookCall } from "@/components/book-call";
 import { NAV_LINKS } from "@/lib/site-data";
 
 export function SiteNav() {
@@ -20,7 +20,7 @@ export function SiteNav() {
         ))}
       </div>
 
-      <CtaButton href="#contact">Book a call</CtaButton>
+      <BookCall size="default">Book a call</BookCall>
     </nav>
   );
 }

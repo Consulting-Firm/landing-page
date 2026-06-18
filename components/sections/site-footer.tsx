@@ -1,7 +1,8 @@
 import Link from "next/link";
 
+import { BookCall } from "@/components/book-call";
 import { Container } from "@/components/container";
-import { CALENDLY_URL, COMPANY, CONTACT_EMAIL } from "@/lib/site-data";
+import { COMPANY, CONTACT_EMAIL } from "@/lib/site-data";
 
 const EXPLORE = [
   { href: "/#services", label: "Services" },
@@ -68,14 +69,12 @@ export function SiteFooter() {
             </h4>
             <ul className="mt-4 flex flex-col gap-2.5 text-[14px]">
               <li>
-                <a
-                  href={CALENDLY_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <BookCall
+                  asLink
                   className="text-ax-muted transition-colors hover:text-ax-ink"
                 >
                   Book a call
-                </a>
+                </BookCall>
               </li>
               <li>
                 <a

@@ -220,7 +220,10 @@
   width: auto;
   display: block;
   user-select: none;
-  opacity: 0.85;
+  opacity: 0.7;
+  /* Recolor full-colour SVGs to a cool premium light grey, preserving holes */
+  filter: brightness(0) saturate(100%) invert(82%) sepia(6%) saturate(260%)
+    hue-rotate(180deg) brightness(95%) contrast(88%);
 }
 @keyframes ax-marquee {
   from {

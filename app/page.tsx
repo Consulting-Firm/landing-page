@@ -1,4 +1,5 @@
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { Certifications } from "@/components/sections/certifications";
 import { Cta } from "@/components/sections/cta";
 import { Hero } from "@/components/sections/hero";
 import { Process } from "@/components/sections/process";
@@ -16,6 +17,7 @@ export default function Home() {
         <Hero />
         <Services />
         <Team />
+        <Certifications />
         <Projects />
         <Process />
         <Cta />

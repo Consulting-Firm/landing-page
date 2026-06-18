@@ -8,7 +8,8 @@ export type VizKind = "planes" | "stack" | "orb" | "rings";
 export interface Service {
   title: string;
   description: string;
-  viz: VizKind;
+  /** lucide-react icon component name (mapped in services.tsx). */
+  icon: string;
 }
 
 export interface TeamMember {
@@ -25,6 +26,8 @@ export interface ProcessStep {
   num: string;
   title: string;
   description: string;
+  /** How long this step typically takes. */
+  duration: string;
 }
 
 export interface Project {
@@ -66,25 +69,38 @@ export const SERVICES: Service[] = [
   {
     title: "Product Engineering",
     description:
-      "Web and mobile products built to last — from first commit to production.",
-    viz: "planes",
+      "End-to-end web & mobile products on Next.js, Payload and Medusa — first commit to production.",
+    icon: "Layers",
   },
   {
     title: "Cloud & Infrastructure",
     description:
-      "Architecture, migrations, and reliability work that scales with you.",
-    viz: "stack",
+      "AWS-certified infra — ECS/Fargate, Terraform and blue-green CI/CD that scales from zero and stays up.",
+    icon: "Cloud",
   },
   {
-    title: "Data & AI",
+    title: "Agentic AI & LLMs",
     description:
-      "Pipelines, models, and applied AI that earn their keep in production.",
-    viz: "orb",
+      "Production AI — Claude agents, RAG and tool-calling that do real work, not demos.",
+    icon: "Bot",
   },
   {
-    title: "Strategy & Design",
-    description: "Sharp scoping, honest roadmaps, and interfaces people trust.",
-    viz: "rings",
+    title: "Automation & Integrations",
+    description:
+      "n8n workflows and event-driven pipelines that wire your tools together and run themselves.",
+    icon: "Workflow",
+  },
+  {
+    title: "Data & Analytics",
+    description:
+      "Pipelines, ML and geospatial — from a Neo4j fraud graph to serverless map tiles.",
+    icon: "Database",
+  },
+  {
+    title: "Strategy & Delivery",
+    description:
+      "Honest scoping, a clear statement of work, and delivery you can see through.",
+    icon: "Compass",
   },
 ];
 
@@ -118,29 +134,36 @@ export const TEAM: TeamMember[] = [
 export const PROCESS: ProcessStep[] = [
   {
     num: "01",
-    title: "Discover",
+    title: "Discovery Call",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.",
+      "A focused first call to map out the product, the constraints and the infrastructure — and whether we're the right team for it.",
+    duration: "30-min call",
   },
   {
     num: "02",
-    title: "Design",
+    title: "The Blueprint",
     description:
-      "Tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.",
+      "A clear statement of work: every step scoped, sequenced and priced, so you know exactly what gets built and how long it takes.",
+    duration: "2–4 days",
   },
   {
     num: "03",
-    title: "Build",
+    title: "Build in Sprints",
     description:
-      "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+      "We ship in weekly sprints with staging deploys and demos — visible progress, no black box, no surprises.",
+    duration: "2–8 weeks",
   },
   {
     num: "04",
-    title: "Scale",
+    title: "Launch & Handover",
     description:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.",
+      "Production launch on infrastructure that scales, with docs and a handover so your team fully owns it.",
+    duration: "~1 week",
   },
 ];
+
+/** Headline estimate shown under the process steps. */
+export const PROCESS_ESTIMATE = "Most builds ship in 6–12 weeks.";
 
 export const PROJECTS: Project[] = [
   {
@@ -517,4 +540,129 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-export const CONTACT_EMAIL = "hello@archthorpe.com";
+/**
+ * AWS certifications shown in the hero. Tier drives the badge colour; the lone
+ * Professional is the visual "keystone". Each links to its public certmetrics
+ * verification record.
+ */
+export type CertTier =
+  | "Foundational"
+  | "Associate"
+  | "Professional"
+  | "Specialty";
+
+/** Desaturated, harmonised on the dark page; Professional is the lone warm hue. */
+export const CERT_TIER_COLOR: Record<CertTier, string> = {
+  Foundational: "#5c9eff", // the house accent
+  Associate: "#9d8cff", // cool periwinkle (the dominant core)
+  Specialty: "#4fd6c4", // cool teal
+  Professional: "#ff8a5c", // the only warm note — reserved for the keystone
+};
+
+export interface Cert {
+  /** Full official name — used for the aria-label. */
+  name: string;
+  /** 1–2 short lines for the hex face. */
+  short: [string, string?];
+  tier: CertTier;
+  issued: string;
+  /** Public certmetrics verification URL. */
+  verifyUrl: string;
+  /** Official AWS badge image (downloaded from Credly) in /public/aws. */
+  badge: string;
+}
+
+const CERT_VERIFY = "https://cp.certmetrics.com/amazon/en/public/verify/credential/";
+
+/** Ordered keystone-first (also the keyboard/reading order). */
+export const CERTS: Cert[] = [
+  {
+    name: "AWS Certified Generative AI Developer – Professional",
+    short: ["GenAI", "Developer"],
+    tier: "Professional",
+    issued: "May 2026",
+    verifyUrl: `${CERT_VERIFY}6a26e9edcd674c30b256854491cca42a`,
+    badge: "/aws/generative-ai-developer-professional.png",
+  },
+  {
+    name: "AWS Certified Security – Specialty",
+    short: ["Security"],
+    tier: "Specialty",
+    issued: "Aug 2025",
+    verifyUrl: `${CERT_VERIFY}f653d7c7a7954b3aa90026a1f6d79858`,
+    badge: "/aws/security-specialty.png",
+  },
+  {
+    name: "AWS Certified Data Engineer – Associate",
+    short: ["Data", "Engineer"],
+    tier: "Associate",
+    issued: "Oct 2025",
+    verifyUrl: `${CERT_VERIFY}fc80ac51fda64b36bbe246f634577db9`,
+    badge: "/aws/data-engineer-associate.png",
+  },
+  {
+    name: "AWS Certified Machine Learning Engineer – Associate",
+    short: ["ML", "Engineer"],
+    tier: "Associate",
+    issued: "Jun 2025",
+    verifyUrl: `${CERT_VERIFY}1aa83089ca9842ef8573e723770fb7aa`,
+    badge: "/aws/machine-learning-engineer-associate.png",
+  },
+  {
+    name: "AWS Certified SysOps Administrator – Associate",
+    short: ["SysOps", "Admin"],
+    tier: "Associate",
+    issued: "Feb 2025",
+    verifyUrl: `${CERT_VERIFY}61f11e8543ff4894b4ee33ae81657138`,
+    badge: "/aws/sysops-administrator-associate.png",
+  },
+  {
+    name: "AWS Certified Developer – Associate",
+    short: ["Developer"],
+    tier: "Associate",
+    issued: "Jan 2025",
+    verifyUrl: `${CERT_VERIFY}b94986da4c6b4bc88a56e12d3e3b1f66`,
+    badge: "/aws/developer-associate.png",
+  },
+  {
+    name: "AWS Certified Solutions Architect – Associate",
+    short: ["Solutions", "Architect"],
+    tier: "Associate",
+    issued: "Dec 2024",
+    verifyUrl: `${CERT_VERIFY}3c64613aece5422aa1e3bb73971c46c1`,
+    badge: "/aws/solutions-architect-associate.png",
+  },
+  {
+    name: "AWS Certified AI Practitioner",
+    short: ["AI", "Practitioner"],
+    tier: "Foundational",
+    issued: "Apr 2025",
+    verifyUrl: `${CERT_VERIFY}7deab11f56eb4910806a716fdcdd83f2`,
+    badge: "/aws/ai-practitioner.png",
+  },
+  {
+    name: "AWS Certified Cloud Practitioner",
+    short: ["Cloud", "Practitioner"],
+    tier: "Foundational",
+    issued: "Apr 2025",
+    verifyUrl: `${CERT_VERIFY}50e7a168f1f54393a210227ec95a3109`,
+    badge: "/aws/cloud-practitioner.png",
+  },
+];
+
+export const CONTACT_EMAIL = "contact@archthorpe.com";
+
+/** Legal entity behind Archthorpe (Romanian SRL) — shown in the footer + /legal. */
+export const COMPANY = {
+  name: "PROJECT CIP SRL",
+  cui: "51711091",
+  regCom: "J2025030670009",
+  address: "Bd. Dacia 133, Sector 2, București, România",
+} as const;
+
+/**
+ * Calendly scheduling link behind every "Book a call" button. Replace the slug
+ * with the real event URL; in Calendly, connect the contact@archthorpe.com
+ * Google Calendar so booked calls land in Gmail/Calendar automatically.
+ */
+export const CALENDLY_URL = "https://calendly.com/contact-archthorpe/30min";

@@ -168,9 +168,9 @@
    pseudo-element decoration — are defined here, ported from the design source.
    ========================================================================== */
 
-/* --- Hero: tuck the tall carousel up under the CTA row --- */
+/* --- Hero: pull the logo strip up under the CTA row --- */
 .hero-visual {
-  margin-top: -4vw;
+  margin-top: 4vw;
 }
 @media (max-width: 640px) {
   .hero-visual {
@@ -178,50 +178,62 @@
   }
 }
 
-/* --- Hero: 3D cylinder carousel ---
-   Card size + centring come from --cw/--ch, which HeroCarousel sets on the
-   track per viewport. Literals are a pre-hydration fallback. */
-.v-carousel {
+/* --- Hero: right-to-left logo marquee ---
+   A single track holds two back-to-back copies of the logo set and slides left
+   by 50%, so the seam is seamless and the loop continuous. Edges fade out via a
+   mask so logos enter/leave cleanly. */
+.logo-marquee {
   position: relative;
-  height: 72vh;
-  perspective: 1800px;
-  perspective-origin: 50% 50%;
   overflow: hidden;
-  /* The empty top of the tube overlaps the CTA buttons; let clicks pass. */
-  pointer-events: none;
+  width: 100%;
+  padding: 8px 0;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
 }
-.car-track {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 0;
-  height: 0;
-  transform-style: preserve-3d;
+.logo-marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: clamp(40px, 6vw, 90px);
+  animation: ax-marquee 40s linear infinite;
   will-change: transform;
 }
-.car-card {
-  position: absolute;
-  width: var(--cw, 300px);
-  height: var(--ch, 380px);
-  left: calc(var(--cw, 300px) / -2);
-  top: calc(var(--ch, 380px) / -2);
-  border-radius: calc(var(--cw, 300px) * 0.08);
-  backface-visibility: hidden;
-  will-change: transform, opacity;
+.logo-marquee-item {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+.logo-marquee-item img {
+  height: clamp(28px, 3.4vw, 46px);
+  width: auto;
+  display: block;
   user-select: none;
-  overflow: hidden;
+  opacity: 0.85;
 }
-/* The SVG is a self-contained tile (background + centred logo baked in), so it
-   fills the card edge to edge. The card sits in a 3D-transformed layer where the
-   parent's rounded overflow clip is unreliable, so round the image itself. */
-.car-logo {
-  position: absolute;
-  inset: 0;
-  border-radius: calc(var(--cw, 300px) * 0.08);
-  overflow: hidden;
+@keyframes ax-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
-.car-logo img {
-  border-radius: inherit;
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee-track {
+    animation: none;
+  }
 }
 
 /* --- Services: animated visualisations --- */

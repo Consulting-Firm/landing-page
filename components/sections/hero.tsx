@@ -1,7 +1,7 @@
 import { Container } from "@/components/container";
 import { CtaButton } from "@/components/cta-button";
 import { Em } from "@/components/typography";
-import { HeroCarousel } from "@/components/sections/hero-carousel";
+import { HeroMarquee } from "@/components/sections/hero-marquee";
 
 export function Hero() {
   return (
@@ -21,7 +21,7 @@ export function Hero() {
       </Container>
 
       <div className="hero-visual">
-        <HeroCarousel />
+        <HeroMarquee />
       </div>
     </header>
   );

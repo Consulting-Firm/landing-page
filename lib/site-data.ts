@@ -55,13 +55,6 @@ export interface Project {
   imageH?: number;
 }
 
-export interface HeroCard {
-  /** Company name — used as the image alt text. */
-  name: string;
-  /** Self-contained logo tile in /public (background baked into the SVG). */
-  img: string;
-}
-
 export const NAV_LINKS = [
   { href: "#services", label: "Services" },
   { href: "#team", label: "Team" },
@@ -522,21 +515,6 @@ export const PROJECTS: Project[] = [
     imageW: 3456,
     imageH: 1924,
   },
-];
-
-/**
- * Client logos wrapped around the 3D hero cylinder — a rotating "trusted by"
- * wall. Files live in /public.
- */
-export const HERO_CARDS: HeroCard[] = [
-  { name: "Adobe", img: "/adobe.svg" },
-  { name: "Deutsche Bank", img: "/deutsche-bank.svg" },
-  // { name: "ByteSchool", img: "/byteschool.svg" },put 
-  { name: "eSolutions", img: "/esolutions.svg" },
-  { name: "Upwork", img: "/upwork.svg" },
-  { name: "safeINIT", img: "/safeinit.svg" },
-  { name: "Softwire", img: "/softwire.svg" },
-  { name: "ING Hubs", img: "/ing-hubs.svg" },
 ];
 
 export const CONTACT_EMAIL = "hello@archthorpe.com";

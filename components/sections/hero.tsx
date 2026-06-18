@@ -2,6 +2,7 @@ import { Container } from "@/components/container";
 import { CtaButton } from "@/components/cta-button";
 import { Em } from "@/components/typography";
 import { HeroMarquee } from "@/components/sections/hero-marquee";
+import { HeroStats } from "@/components/sections/hero-stats";
 
 export function Hero() {
   return (
@@ -18,6 +19,10 @@ export function Hero() {
             See our work
           </CtaButton>
         </div>
+      </Container>
+
+      <Container>
+        <HeroStats />
       </Container>
 
       <div className="hero-visual">

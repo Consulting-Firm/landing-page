@@ -216,7 +216,7 @@
   flex: none;
 }
 .logo-marquee-item img {
-  height: clamp(28px, 3.4vw, 46px);
+  height: clamp(15.4px, 1.87vw, 25.3px);
   width: auto;
   display: block;
   user-select: none;

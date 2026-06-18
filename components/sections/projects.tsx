@@ -108,7 +108,10 @@ export function Projects() {
   const hidden = PROJECTS.slice(VISIBLE_COUNT);
 
   return (
-    <section id="work" className="py-[130px] max-[980px]:py-[90px]">
+    <section
+      id="work"
+      className="bg-[#f5f3ee] py-[130px] text-[#0a0a0a] max-[980px]:py-[90px]"
+    >
       <Container>
         <div className="rv mb-16 max-w-[760px]">
           <Kicker>Our work</Kicker>

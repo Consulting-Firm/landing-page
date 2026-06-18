@@ -3,7 +3,6 @@ const MARQUEE_LOGOS = [
   { name: "Deutsche Bank", img: "/marquee/deutsche-bank.svg" },
   { name: "eSolutions", img: "/marquee/esolutions.svg" },
   { name: "Upwork", img: "/marquee/upwork.svg" },
-  { name: "safeINIT", img: "/marquee/safeinit.svg" },
   { name: "Softwire", img: "/marquee/softwire.svg" },
   { name: "ING", img: "/marquee/ing.svg" },
   { name: "ByteSchool", img: "/marquee/byteschool.svg" },

@@ -168,60 +168,195 @@
    pseudo-element decoration — are defined here, ported from the design source.
    ========================================================================== */
 
-/* --- Hero: tuck the tall carousel up under the CTA row --- */
+/* --- Hero: pull the logo strip up under the CTA row --- */
 .hero-visual {
-  margin-top: -4vw;
+  margin-top: 7vw;
 }
 @media (max-width: 640px) {
   .hero-visual {
-    margin-top: 24px;
+    margin-top: 40px;
   }
 }
 
-/* --- Hero: 3D cylinder carousel ---
-   Card size + centring come from --cw/--ch, which HeroCarousel sets on the
-   track per viewport. Literals are a pre-hydration fallback. */
-.v-carousel {
-  position: relative;
-  height: 72vh;
-  perspective: 1800px;
-  perspective-origin: 50% 50%;
-  overflow: hidden;
-  /* The empty top of the tube overlaps the CTA buttons; let clicks pass. */
-  pointer-events: none;
+/* --- Hero: editorial stat band (between CTAs and marquee) ---
+   Six figures roll up on first view. Hairlines frame the row and fade at their
+   ends; thin gradient rules divide the cells; a soft accent wash sits behind. */
+.hero-stats-rule {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--ax-line) 14%,
+    var(--ax-line) 86%,
+    transparent
+  );
 }
-.car-track {
+.hero-stats-glow {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 0;
-  height: 0;
-  transform-style: preserve-3d;
+  width: 70%;
+  height: 220px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--ax-accent) 14%, transparent),
+    transparent 72%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.hero-stats-in .hero-stats-glow {
+  opacity: 1;
+}
+/* Vertical divider before every cell except the first of each visual row. The
+   gradient fades top/bottom so the rule reads as a hairline, not a hard line. */
+.hero-stat::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 56%;
+  width: 1px;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--ax-line) 22%,
+    var(--ax-line) 78%,
+    transparent
+  );
+}
+.hero-stat:nth-child(2n + 1)::before {
+  display: none;
+}
+@media (min-width: 640px) {
+  .hero-stat:nth-child(2n + 1)::before {
+    display: block;
+  }
+  .hero-stat:nth-child(3n + 1)::before {
+    display: none;
+  }
+}
+@media (min-width: 1024px) {
+  .hero-stat:nth-child(3n + 1)::before {
+    display: block;
+  }
+  .hero-stat:nth-child(6n + 1)::before {
+    display: none;
+  }
+}
+/* Figure: cream ink fading to faint at the foot — gives the numerals depth. */
+.hero-stat-num {
+  background: linear-gradient(180deg, var(--ax-ink), rgba(245, 243, 238, 0.62));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero-stat .hero-stat-num,
+.hero-stat .hero-stat-num + span {
+  transition:
+    filter 0.4s ease,
+    transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.hero-stat:hover .hero-stat-num {
+  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--ax-accent) 35%, transparent));
+}
+/* Staggered fade-up of each cell as the band activates. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-stat {
+    opacity: 0;
+    transform: translateY(calc(18px * var(--ax-motion)));
+    transition:
+      opacity 0.7s ease,
+      transform 0.8s cubic-bezier(0.16, 0.84, 0.28, 1);
+  }
+  .hero-stats-in .hero-stat {
+    opacity: 1;
+    transform: none;
+  }
+  .hero-stats-in .hero-stat:nth-child(1) {
+    transition-delay: 0.04s;
+  }
+  .hero-stats-in .hero-stat:nth-child(2) {
+    transition-delay: 0.12s;
+  }
+  .hero-stats-in .hero-stat:nth-child(3) {
+    transition-delay: 0.2s;
+  }
+  .hero-stats-in .hero-stat:nth-child(4) {
+    transition-delay: 0.28s;
+  }
+  .hero-stats-in .hero-stat:nth-child(5) {
+    transition-delay: 0.36s;
+  }
+  .hero-stats-in .hero-stat:nth-child(6) {
+    transition-delay: 0.44s;
+  }
+}
+
+/* --- Hero: right-to-left logo marquee ---
+   A single track holds two back-to-back copies of the logo set and slides left
+   by 50%, so the seam is seamless and the loop continuous. Edges fade out via a
+   mask so logos enter/leave cleanly. */
+.logo-marquee {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 8px 0;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
+.logo-marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: clamp(40px, 6vw, 90px);
+  animation: ax-marquee 40s linear infinite;
   will-change: transform;
 }
-.car-card {
-  position: absolute;
-  width: var(--cw, 300px);
-  height: var(--ch, 380px);
-  left: calc(var(--cw, 300px) / -2);
-  top: calc(var(--ch, 380px) / -2);
-  border-radius: calc(var(--cw, 300px) * 0.08);
-  backface-visibility: hidden;
-  will-change: transform, opacity;
+.logo-marquee-item {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+.logo-marquee-item img {
+  height: clamp(19px, 2.3vw, 31px);
+  width: auto;
+  display: block;
   user-select: none;
-  overflow: hidden;
+  opacity: 0.7;
+  /* Recolor full-colour SVGs to a cool premium light grey, preserving holes */
+  filter: brightness(0) saturate(100%) invert(82%) sepia(6%) saturate(260%)
+    hue-rotate(180deg) brightness(95%) contrast(88%);
 }
-/* The SVG is a self-contained tile (background + centred logo baked in), so it
-   fills the card edge to edge. The card sits in a 3D-transformed layer where the
-   parent's rounded overflow clip is unreliable, so round the image itself. */
-.car-logo {
-  position: absolute;
-  inset: 0;
-  border-radius: calc(var(--cw, 300px) * 0.08);
-  overflow: hidden;
+@keyframes ax-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
-.car-logo img {
-  border-radius: inherit;
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee-track {
+    animation: none;
+  }
 }
 
 /* --- Services: animated visualisations --- */

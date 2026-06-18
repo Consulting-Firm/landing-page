@@ -11,8 +11,8 @@ const variants = {
 } as const;
 
 const sizes = {
-  default: "px-7 py-3.5 text-[13px]",
-  big: "px-9 py-4 text-sm",
+  default: "px-5 py-3 text-[12px] sm:px-7 sm:py-3.5 sm:text-[13px]",
+  big: "px-6 py-3 text-[13px] sm:px-9 sm:py-4 sm:text-sm",
 } as const;
 
 type CtaButtonProps = React.ComponentProps<"a"> & {
